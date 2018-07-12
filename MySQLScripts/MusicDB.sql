@@ -1,0 +1,60 @@
+CREATE DATABASE MusicDB;
+use MusicDB;
+
+CREATE TABLE topic(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    PRIMARY KEY ( id )
+) ENGINE=INNODB;
+
+
+CREATE TABLE genre(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+	image VARCHAR(255) NOT NULL,
+	idTopic INT,
+    PRIMARY KEY ( id ), 
+    FOREIGN KEY (idTopic) REFERENCES topic(id)
+) ENGINE=INNODB;
+
+CREATE TABLE playlist(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    icon VARCHAR(255) NOT NULL,
+    PRIMARY KEY ( id )
+) ENGINE=INNODB;
+
+CREATE TABLE album(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    singer VARCHAR(255) NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    PRIMARY KEY ( id )
+) ENGINE=INNODB;
+
+
+
+CREATE TABLE song(
+    id INT NOT NULL AUTO_INCREMENT,
+    idAlbum INT,
+    idGenre INT,
+    idPlayList INT ,
+    name VARCHAR(255) NOT NULL,
+	image VARCHAR(255) NOT NULL,
+    singer VARCHAR(255) NOT NULL,
+    link TEXT NOT NULL,
+    likeNo int,
+    PRIMARY KEY ( id )
+) ENGINE=INNODB;
+
+
+CREATE TABLE advert(
+    id INT NOT NULL AUTO_INCREMENT,
+    content VARCHAR(255) NOT NULL,
+    idSong int,
+    image VARCHAR(255) NOT NULL,
+    PRIMARY KEY ( id )
+) ENGINE=INNODB;
+
